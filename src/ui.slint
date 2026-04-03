@@ -48,8 +48,8 @@ export component MainWindow inherits Window {
     min-height: 360px;
     max-height: 360px;
 
-    property <string> statusText: "Status: Stopped";
-    property <color> statusColor: #000000;
+    in-out property <string> statusText: "Status: Stopped";
+    in-out property <color> statusColor: #000000;
 
     callback quit();
     callback startServer();

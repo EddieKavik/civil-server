@@ -23,9 +23,19 @@ mainWindow.startServer = () => {
     mainWindow.statusColor = "#f39c12";
     serverManager
         .start()
-        .then((r) => console.log(r.message))
-        .catch((e) => console.error(e))
-        .finally(refreshStatus);
+        .then((r) => {
+            console.log(r.message);
+            if (r.success) {
+                mainWindow.statusText = `Running on ${serverManager.config.port}`;
+                mainWindow.statusColor = "#27ae60";
+            } else {
+                refreshStatus();
+            }
+        })
+        .catch((e) => {
+            console.error(e);
+            refreshStatus();
+        });
 };
 
 mainWindow.stopServer = () => {
