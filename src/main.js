@@ -12,7 +12,7 @@ const serverManager = new ServerManager();
 const refreshStatus = () => {
     const text = serverManager.getStatusText();
     mainWindow.statusText = text;
-    mainWindow.statusColor = text.startsWith("Running") ? "#27ae60" : "#000000";
+    mainWindow.statusColor = text.startsWith("Running") ? "#2ecc71" : "#000000";
 };
 
 refreshStatus();
@@ -27,7 +27,7 @@ mainWindow.startServer = () => {
             console.log(r.message);
             if (r.success) {
                 mainWindow.statusText = `Running on ${serverManager.config.port}`;
-                mainWindow.statusColor = "#27ae60";
+                mainWindow.statusColor = "#2ecc71";
             } else {
                 refreshStatus();
             }
