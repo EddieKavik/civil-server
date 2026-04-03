@@ -1,0 +1,17 @@
+{
+  "name": "civil-server",
+  "version": "0.1.0",
+  "description": "Civil Server - Native Linux desktop application (Node.js + Slint)",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "dev:ui": "slint-viewer src/ui.slint"
+  },
+  "dependencies": {
+    "slint-ui": "^1.15.1"
+  },
+  "devDependencies": {
+    "@slint-ui/slint-ui-binary-linux-x64-gnu": "^1.15.1"
+  },
+  "license": "MIT"
+}

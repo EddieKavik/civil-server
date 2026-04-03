@@ -1,0 +1,44 @@
+export component AboutDialog inherits Window {
+    title: "About";
+    preferred-width: 250px;
+    preferred-height: 200px;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 200px;
+    max-height: 200px;
+
+    callback closeDialog();
+
+    Text {
+        x: 0px;
+        y: 44px;
+        width: root.width;
+        height: 40px;
+        text: "Civil Server v1.0\nAlways-on dev utility.";
+        font-size: 16px;
+        horizontal-alignment: center;
+    }
+
+    Rectangle {
+        x: (root.width - 80px) / 2;
+        y: 150px;
+        width: 80px;
+        height: 28px;
+        background: #c0392b;
+        border-radius: 2px;
+        border-width: 1px;
+        border-color: #a93226;
+
+        Text {
+            text: "OK";
+            color: #ffffff;
+            font-weight: 700;
+            vertical-alignment: center;
+            horizontal-alignment: center;
+        }
+
+        TouchArea {
+            clicked => { root.closeDialog(); }
+        }
+    }
+}
