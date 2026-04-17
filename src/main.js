@@ -1,3 +1,4 @@
+// Civil Server - Server Management Application with GUI Configuration
 const slint = require("slint-ui");
 const ServerManager = require("./server-manager");
 
