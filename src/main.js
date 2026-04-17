@@ -125,34 +125,30 @@ mainWindow.configuration = async () => {
     configDialog.directoryText = serverManager.config.directory;
     
     configDialog.saveConfig = async (port, command, directory) => {
-        console.log(`DEBUG: Saving config from UI`);
-        console.log(`DEBUG: port type: ${typeof port}, value: "${port}"`);
-        console.log(`DEBUG: command type: ${typeof command}, value: "${command}"`);
-        console.log(`DEBUG: directory type: ${typeof directory}, value: "${directory}"`);
+        console.log(`Saving config: port=${port}, command=${command}, directory=${directory}`);
         serverManager.updateConfig({ port, command, directory });
         
         // Check if server is running and restart it with new config
         const currentStatus = serverManager.getServerStatus();
-        console.log(`DEBUG: Current server status: ${currentStatus}`);
         if (currentStatus.includes("Running")) {
-            console.log("DEBUG: Server is running, restarting with new config...");
+            console.log("Server is running, restarting with new config...");
             
             // Stop the server
             const stopResult = serverManager.stopServer();
-            console.log("DEBUG: Stop result:", stopResult.message);
+            console.log("Stop result:", stopResult.message);
             
             // Wait a moment for clean shutdown
             await new Promise(resolve => setTimeout(resolve, 1000));
             
             // Restart the server
             const startResult = await serverManager.startServer();
-            console.log("DEBUG: Start result:", startResult.message);
+            console.log("Start result:", startResult.message);
             
             // Update UI status
             mainWindow.statusText = serverManager.getServerStatus();
             mainWindow.statusColor = mainWindow.statusText.includes("Running") ? "#27ae60" : "#e74c3c";
         } else {
-            console.log("DEBUG: Server is not running, no restart needed");
+            console.log("Server is not running, no restart needed");
         }
     };
     

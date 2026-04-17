@@ -211,15 +211,10 @@ class ServerManager {
     }
 
     updateConfig(newConfig) {
-        console.log('DEBUG: Before update, config:', JSON.stringify(this.config));
-        console.log('DEBUG: New config to apply:', JSON.stringify(newConfig));
         this.config = { ...this.config, ...newConfig };
-        console.log('DEBUG: After merge, config:', JSON.stringify(this.config));
         this.saveConfig();
-        console.log('DEBUG: Config saved to file');
         // Reload config from file to ensure consistency
         this.config = this.loadConfig();
-        console.log('DEBUG: After reload from file, config:', JSON.stringify(this.config));
     }
 }
 
