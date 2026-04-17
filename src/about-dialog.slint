@@ -1,0 +1,42 @@
+export component AboutDialog inherits Window {
+    title: "About";
+    width: 300px;
+    height: 200px;
+    
+    callback closeDialog();
+    
+    VerticalLayout {
+        padding: 20px;
+        spacing: 10px;
+        
+        Text {
+            text: "Civil Server v1.0";
+            font-size: 16px;
+            font-weight: 700;
+            horizontal-alignment: center;
+        }
+        
+        Text {
+            text: "Always-on dev utility rebuilt with Node.js and Slint.dev";
+            wrap: word-wrap;
+            horizontal-alignment: center;
+        }
+        
+        Rectangle {
+            height: 30px;
+            background: #3498db;
+            border-radius: 4px;
+            
+            Text {
+                text: "OK";
+                color: white;
+                vertical-alignment: center;
+                horizontal-alignment: center;
+            }
+            
+            TouchArea {
+                clicked => { root.closeDialog(); }
+            }
+        }
+    }
+}

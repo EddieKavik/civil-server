@@ -1,0 +1,135 @@
+export component MainWindow inherits Window {
+    title: "Civil Server";
+    width: 250px;
+    height: 365px;
+    
+    property <string> statusText: "Status: Stopped";
+    property <color> statusColor: #e74c3c;
+    
+    callback quit();
+    callback startServer();
+    callback stopServer();
+    callback syncSessions();
+    callback configuration();
+    callback about();
+    
+    VerticalLayout {
+        spacing: 8px;
+        padding: 15px;
+        
+        Text {
+            text: "Civil Server";
+            font-size: 18px;
+            font-weight: 700;
+            horizontal-alignment: center;
+        }
+        
+        Text {
+            text: root.statusText;
+            color: root.statusColor;
+            horizontal-alignment: center;
+        }
+        
+        Rectangle {
+            height: 28px;
+            background: #3498db;
+            border-radius: 4px;
+            
+            Text {
+                text: "Start Server";
+                color: white;
+                vertical-alignment: center;
+                horizontal-alignment: center;
+            }
+            
+            TouchArea {
+                clicked => { root.startServer(); }
+            }
+        }
+        
+        Rectangle {
+            height: 28px;
+            background: #e74c3c;
+            border-radius: 4px;
+            
+            Text {
+                text: "Stop Server";
+                color: white;
+                vertical-alignment: center;
+                horizontal-alignment: center;
+            }
+            
+            TouchArea {
+                clicked => { root.stopServer(); }
+            }
+        }
+        
+        Rectangle {
+            height: 28px;
+            background: #95a5a6;
+            border-radius: 4px;
+            
+            Text {
+                text: "Sync Sessions";
+                color: white;
+                vertical-alignment: center;
+                horizontal-alignment: center;
+            }
+            
+            TouchArea {
+                clicked => { root.syncSessions(); }
+            }
+        }
+        
+        Rectangle {
+            height: 28px;
+            background: #95a5a6;
+            border-radius: 4px;
+            
+            Text {
+                text: "Configuration";
+                color: white;
+                vertical-alignment: center;
+                horizontal-alignment: center;
+            }
+            
+            TouchArea {
+                clicked => { root.configuration(); }
+            }
+        }
+        
+        Rectangle {
+            height: 28px;
+            background: #95a5a6;
+            border-radius: 4px;
+            
+            Text {
+                text: "About";
+                color: white;
+                vertical-alignment: center;
+                horizontal-alignment: center;
+            }
+            
+            TouchArea {
+                clicked => { root.about(); }
+            }
+        }
+        
+        Rectangle {
+            height: 28px;
+            background: #c0392b;
+            border-radius: 4px;
+            
+            Text {
+                text: "Quit";
+                color: white;
+                vertical-alignment: center;
+                horizontal-alignment: center;
+            }
+            
+            TouchArea {
+                clicked => { root.quit(); }
+            }
+        }
+    }
+}

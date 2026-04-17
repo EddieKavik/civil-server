@@ -1,0 +1,70 @@
+import { Button, LineEdit, VerticalBox } from "std-widgets.slint";
+
+export component ConfigDialog inherits Window {
+    title: "Configuration";
+    width: 400px;
+    height: 350px;
+    
+    in-out property <string> portText;
+    in-out property <string> commandText;
+    in-out property <string> directoryText;
+    
+    callback saveConfig(string, string, string);
+    callback closeDialog();
+    
+    VerticalBox {
+        padding: 20px;
+        spacing: 15px;
+        
+        Text {
+            text: "Server Configuration";
+            font-size: 18px;
+            font-weight: 700;
+            horizontal-alignment: center;
+        }
+        
+        VerticalLayout {
+            spacing: 5px;
+            Text { text: "Port:"; }
+            LineEdit {
+                text <=> root.portText;
+                placeholder-text: "e.g. 4567";
+            }
+        }
+        
+        VerticalLayout {
+            spacing: 5px;
+            Text { text: "Command:"; }
+            LineEdit {
+                text <=> root.commandText;
+                placeholder-text: "e.g. node server.js";
+            }
+        }
+        
+        VerticalLayout {
+            spacing: 5px;
+            Text { text: "Directory:"; }
+            LineEdit {
+                text <=> root.directoryText;
+                placeholder-text: "Full path to project";
+            }
+        }
+        
+        HorizontalLayout {
+            spacing: 10px;
+            alignment: center;
+            Button {
+                text: "Save";
+                primary: true;
+                clicked => { 
+                    root.saveConfig(root.portText, root.commandText, root.directoryText);
+                    root.closeDialog(); 
+                }
+            }
+            Button {
+                text: "Cancel";
+                clicked => { root.closeDialog(); }
+            }
+        }
+    }
+}
