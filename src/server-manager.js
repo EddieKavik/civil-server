@@ -71,15 +71,9 @@ class ServerManager {
         const cmd = this.config.command;
         const dir = path.resolve(this.config.directory); // Ensure absolute
 
-        console.log(`DEBUG: Attempting to start server`);
-        console.log(`DEBUG: Port: ${port}`);
-        console.log(`DEBUG: Command: ${cmd}`);
-        console.log(`DEBUG: Directory: ${dir}`);
-        console.log(`DEBUG: Directory exists: ${fs.existsSync(dir)}`);
-
         // Check if directory exists
         if (!fs.existsSync(dir)) {
-            console.log(`DEBUG ERROR: Directory does not exist: ${dir}`);
+            console.log(`Directory does not exist: ${dir}`);
             return { success: false, message: `Directory does not exist: ${dir}` };
         }
 
@@ -211,15 +205,10 @@ class ServerManager {
     }
 
     updateConfig(newConfig) {
-        console.log('DEBUG: Before update, config:', JSON.stringify(this.config));
-        console.log('DEBUG: New config to apply:', JSON.stringify(newConfig));
         this.config = { ...this.config, ...newConfig };
-        console.log('DEBUG: After merge, config:', JSON.stringify(this.config));
         this.saveConfig();
-        console.log('DEBUG: Config saved to file');
         // Reload config from file to ensure consistency
         this.config = this.loadConfig();
-        console.log('DEBUG: After reload from file, config:', JSON.stringify(this.config));
     }
 }
 
